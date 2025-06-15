@@ -4,7 +4,7 @@ This is the **backend server** for **SociallApp**, a social media platform that 
 login, and create, edit, or delete their own posts — each with a title, description, image, and timestamp.
 The backend is built using **Node.js**, **Express.js**, and **MongoDB**, and handles all API requests, authentication, and data storage.
 
-> 🌍 **Frontend Live Demo:** [https://social-app-gamma-nine.vercel.app](https://social-app-gamma-nine.vercel.app)  
+> 🌍 **Live Demo:** [https://social-app-gamma-nine.vercel.app](https://social-app-gamma-nine.vercel.app)  
 > 📁 **Frontend Repo:** [https://github.com/abdallaskar/SocialApp](https://github.com/abdallaskar/SocialApp)  
 > 📁 **Backend Repo:** [https://github.com/abdallaskar/SocialApp_Backend](https://github.com/abdallaskar/SocialApp_Backend)  
 > 📽️ **YouTube Video:** Coming Soon!
