@@ -7,7 +7,7 @@ The backend is built using **Node.js**, **Express.js**, and **MongoDB**, and han
 > 🌍 **Live Demo:** [https://social-app-gamma-nine.vercel.app](https://social-app-gamma-nine.vercel.app)  
 > 📁 **Frontend Repo:** [https://github.com/abdallaskar/SocialApp](https://github.com/abdallaskar/SocialApp)  
 > 📁 **Backend Repo:** [https://github.com/abdallaskar/SocialApp_Backend](https://github.com/abdallaskar/SocialApp_Backend)  
-> 🔗 **You Tube Vide:** [https://youtu.be/MMw4khoZebc](https://youtu.be/MMw4khoZebc)
+> 🔗 **You Tube Vide:** [https://youtu.be/8dG771fiPzg](https://youtu.be/8dG771fiPzg)
 
 ---
 
