@@ -11,11 +11,12 @@ import { errorHandler, notFound } from './middlewares/errorHandler.js';
 
 const PORT = process.env.PORT;
 const MONGODB_URI = process.env.MONGODB_URI;
+const CorsOrgin = process.env.CORS_ORIGINS || '*';
 
 const app = express();
 // Middleware
 app.use(cors({
-    origin: process.env.CORS_ORIGINS?.split(','),
+    origin: CorsOrgin?.split(','),
     credentials: true
 }));
 
@@ -32,6 +33,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/users', userRoutes);
 
+
+
 // Connect to MongoDB
 connectDB(MONGODB_URI).then(() => {
     app.listen(PORT, () => {
@@ -39,6 +42,9 @@ connectDB(MONGODB_URI).then(() => {
     });
 });
 
+app.use('/', (req, res, next) => {
+    res.status(200).json({ message: 'Welcome to the API' });
+});
 // Error handling middleware 
 app.use(errorHandler);
 // 404 handler for undefined routes
