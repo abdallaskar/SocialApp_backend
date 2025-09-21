@@ -1,14 +1,20 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import connectDB from '../config/database.js'; // adjust path if needed
-import authRoutes from '../routes/auth.js';
-import postRoutes from '../routes/posts.js';
-import userRoutes from '../routes/users.js';
-import { errorHandler, notFound } from '../middlewares/errorHandler.js';
-import serverless from 'serverless-http';
+import connectDB from './config/database.js'; // adjust path if needed
+import authRoutes from './routes/auth.js';
+import postRoutes from './routes/posts.js';
+import userRoutes from './routes/users.js';
+import { errorHandler, notFound } from './middlewares/errorHandler.js';
+
+
+
+
 
 const app = express();
+
+const PORT = process.env.PORT || 3000;
+const mongoURI = process.env.MONGODB_URI;
 
 const CorsOrigin = process.env.CORS_ORIGINS || '*';
 app.use(cors({ origin: CorsOrigin.split(','), credentials: true }));
@@ -26,7 +32,12 @@ app.use(errorHandler);
 app.use(notFound);
 
 // Connect to DB only once (outside handler)
-await connectDB(process.env.MONGODB_URI);
+await connectDB(mongoURI).then(() => {
+    console.log('MongoDB connected');
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+}).catch((error) => {
+    console.error('MongoDB connection error:', error);
+});
 
-// Export handler for Vercel
-export const handler = serverless(app);
