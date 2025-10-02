@@ -6,6 +6,7 @@ import authRoutes from './routes/auth.js';
 import postRoutes from './routes/posts.js';
 import userRoutes from './routes/users.js';
 import { errorHandler, notFound } from './middlewares/errorHandler.js';
+import { authLimiter, apiLimiter } from './middlewares/rateLimiter.js';
 
 
 
@@ -21,9 +22,11 @@ app.use(cors({ origin: CorsOrigin.split(','), credentials: true }));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
+app.use(apiLimiter); // Apply standard rate limit to all /api/ routes
+
 // Routes
 app.get('/api/health', (req, res) => res.json({ message: 'Server is running!' }));
-app.use('/api/auth', authRoutes);
+app.use('/api/auth', authLimiter, authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/users', userRoutes);
 app.use('/', (req, res) => res.json({ message: 'Welcome to the API' }));
